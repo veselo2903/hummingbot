@@ -16,13 +16,12 @@ class OneOne(ScriptStrategyBase):
     trading_pair = "BTC-USDT"
 
     def on_start(self):
-        # Этот метод вызовется один раз при старте стратегии
-        mexc_connector = self.connectors.get("mexc")
-        if mexc_connector is not None:
-            available_pairs = mexc_connector.trading_pairs
-            self.logger().info(f"Доступные пары MEXC: {available_pairs}")
-        else:
-            self.logger().warning("Коннектор MEXC не найден!")
+    connector = self.connectors.get(self.exchange)
+    if connector is not None:
+        available_pairs = connector.trading_pairs
+        self.logger().info(f"Доступные пары {self.exchange}: {available_pairs}")
+    else:
+        self.logger().warning(f"Коннектор {self.exchange} не найден!")
 
 class MexcMultiTfBtc(ScriptStrategyBase):
     """
