@@ -28,7 +28,7 @@ class MexcMultiTfBtc(ScriptStrategyBase):
     """
     Многотаймфреймовая стратегия для BTC/USDT на бирже MEXC.
     """
-    markets = {"mexc": {"BTC-USDT"}}
+    markets = {"paper_trade": {"BTC-USDT"}}
 
     # Встроенные параметры конфигурации
     exchange = "paper_trade"
