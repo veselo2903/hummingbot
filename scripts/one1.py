@@ -76,9 +76,9 @@ class MexcMultiTfBtc(ScriptStrategyBase):
 def on_tick(self):
     if not self.ready_to_trade:
         return
-    if "BTC-USDT" not in self.connectors["mexc"].trading_pairs:
-        self.logger().error(f"Пара BTC-USDT не распознана MEXC. Доступные пары: {self.connectors['mexc'].trading_pairs}")
-        return
+    if self.trading_pair not in self.connectors[self.exchange].trading_pairs:
+    self.logger().error(f"Пара {self.trading_pair} не распознана. Доступные пары: {self.connectors[self.exchange].trading_pairs}")
+    return
 
         if self.active_order_id:
             return
